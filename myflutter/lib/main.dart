@@ -66,14 +66,37 @@ class HomeContent extends StatelessWidget {
       child: Container(
         width: 400.0,
         height: 400.0,
-        decoration: BoxDecoration(
-            color: Colors.blue,
-            borderRadius: BorderRadius.all(Radius.circular(30.0)),
-            image: DecorationImage(
-                image: NetworkImage(
-                  "http://n1.itc.cn/img8/wb/recom/2016/07/09/146803063527555433.JPEG",
-                ),
-                fit: BoxFit.cover)),
+        //使用 ClipOval 实现圆角图片
+        child: ClipOval(
+          // 加载远程图片
+          // child: Image.network(
+          //   "http://n1.itc.cn/img8/wb/recom/2016/07/09/146803063527555433.JPEG",
+          //   height: 100.0,
+          //   width: 100.0,
+          //   fit: BoxFit.cover,
+          // ),
+
+          // 加载本地图片
+          child: Image.asset(
+            "images/a.jpg",
+            fit: BoxFit.cover,
+          ),
+        ),
+
+        // ------------------圆角图片---------------------
+        // width: 400.0,
+        // height: 400.0,
+        // decoration: BoxDecoration(
+        //     color: Colors.blue,
+        //     borderRadius: BorderRadius.all(Radius.circular(30.0)),
+        //     image: DecorationImage(
+        //         image: NetworkImage(
+        //           "http://n1.itc.cn/img8/wb/recom/2016/07/09/146803063527555433.JPEG",
+        //         ),
+        //         fit: BoxFit.cover)),
+
+        // ------------------圆角图片---------------------
+
         // child: Image.network(
         //   "http://n1.itc.cn/img8/wb/recom/2016/07/09/146803063527555433.JPEG",
         //   alignment: Alignment.bottomRight,
