@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dataSource/listDataOne.dart';
 
 void main(List<String> args) {
   return runApp(MyApp());
@@ -7,11 +8,10 @@ void main(List<String> args) {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Flutter Custom Control"),
+          title: Text("Stack 组件"),
         ),
         body: HomeContent(),
       ),
@@ -22,87 +22,96 @@ class MyApp extends StatelessWidget {
 class HomeContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 600.0,
-      child:  Column(
+    // TODO: implement build
+    // return Wrap(
+    //   spacing: 10.0,
+    //   alignment: WrapAlignment.center,
+    //   children: <Widget>[
+    //     MyButton("试试看"),
+    //   ],
+    // );
+    // return HomePage();
+    return HomefulPage();
+  }
+}
+
+class HomefulPage extends StatefulWidget {
+  HomefulPage({Key key}) : super(key: key);
+
+  _HomefulPageState createState() => _HomefulPageState();
+}
+
+class _HomefulPageState extends State<HomefulPage> {
+  String myName = "我就是我";
+  int countNumbe = 0;
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
       children: <Widget>[
-        Expanded(
-          flex: 3,
-          child: Container(
-            color: Colors.lightGreen,
-          ),
-        ),
-        Expanded(
-          flex: 2,
-          child: Container(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Expanded(
-                  flex: 2,
-                  child: IconContainer(
-                    icon: Icons.search,
-                    containerColor: Colors.red,
-                    iconColor: Colors.white,
-                    iconSize: 40.0,
-                  ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    child: Column(
-                      children: <Widget>[
-                        IconContainer(
-                          icon: Icons.search,
-                          containerColor: Colors.yellow,
-                          iconColor: Colors.white,
-                          iconSize: 40.0,
-                        ),
-                        SizedBox(
-                          height: 5,
-                        )
-                        IconContainer(
-                          icon: Icons.search,
-                          containerColor: Colors.pink,
-                          iconColor: Colors.white,
-                          iconSize: 40.0,
-                        ),
-                      ],
-                    ),
-                  ),
-                )
-              ],
+        Column(
+          children: <Widget>[
+            Chip(
+              label: Text("${this.countNumbe}"),
             ),
-          ),
+            ListTile(
+              title: Text("${this.countNumbe}"),
+            ),
+            ListTile(
+              title: Text("新闻: +${this.myName}"),
+            ),
+          ],
+        ),
+        SizedBox(
+          height: 20.0,
+        ),
+        RaisedButton(
+          child: Text("~看我72变~"),
+          onPressed: () {
+            setState(() {
+              this.countNumbe++;
+              this.myName = "${this.countNumbe}";
+            });
+          },
         )
       ],
-    )
-  
     );
   }
 }
 
-class IconContainer extends StatelessWidget {
-  double iconSize = 32.0;
-  Color iconColor = Colors.white;
-  Color containerColor = Colors.blue;
-  IconData icon = Icons.home;
-  IconContainer(
-      {this.icon, this.iconColor, this.iconSize, this.containerColor});
+class HomePage extends StatelessWidget {
+  int countNum = 0;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100.0,
-      width: 100.0,
-      color: containerColor,
-      child: Center(
-        child: Icon(
-          icon,
-          size: iconSize,
-          color: iconColor,
-        ),
+      child: Column(
+        children: <Widget>[
+          Text("${this.countNum}"),
+          RaisedButton(
+            child: Text("试试看"),
+            onPressed: () {
+              // setState()   //无法改变数值
+              this.countNum++;
+              print(this.countNum);
+            },
+          )
+        ],
       ),
+    );
+  }
+}
+
+class MyButton extends StatelessWidget {
+  final String text;
+  const MyButton(this.text, {Key key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return RaisedButton(
+      color: Colors.white,
+      textColor: Theme.of(context).accentColor,
+      child: Text(text),
+      onPressed: () {},
     );
   }
 }

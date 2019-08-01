@@ -20,7 +20,6 @@ class MyApp extends StatelessWidget {
 }
 
 class HomeContent extends StatelessWidget {
-  
   // GridView.coun 数据源
   List<Widget> _getNewListData() {
     var tempListData = listOneData.map((value) {
@@ -34,11 +33,13 @@ class HomeContent extends StatelessWidget {
             Image.network(value["imageUrl"]),
             SizedBox(
               height: 10.0,
-            )
-            Text(value["title"]
-            style: TextStyle(
-              fontSize: 15.0,
-            ),),
+            ),
+            Text(
+              value["title"],
+              style: TextStyle(
+                fontSize: 15.0,
+              ),
+            ),
           ],
         ),
       );
@@ -46,29 +47,26 @@ class HomeContent extends StatelessWidget {
     return tempListData.toList();
   }
 
-
-Widget _getListBuilderData (context, index) {
-  return Container(
-    decoration: BoxDecoration(
-      border: Border.all(
+  Widget _getListBuilderData(context, index) {
+    return Container(
+      decoration: BoxDecoration(
+          border: Border.all(
         color: Colors.purple,
-      )
-    ),
-    child: Column(
-      children: <Widget>[
-        Image.network(listOneData[index]["imageUrl"]),
-        SizedBox(
-          height: 10.0,
-        ),
-        Text(listOneData[index]["title"],
-        textAlign: TextAlign.center,),
-      ],
-    ),
-  );
-
-
-}
-
+      )),
+      child: Column(
+        children: <Widget>[
+          Image.network(listOneData[index]["imageUrl"]),
+          SizedBox(
+            height: 10.0,
+          ),
+          Text(
+            listOneData[index]["title"],
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
+    );
+  }
 
   List<Widget> _getListData() {
     List<Widget> listData = List();
@@ -89,8 +87,7 @@ Widget _getListBuilderData (context, index) {
 
   @override
   Widget build(BuildContext context) {
-    
-    //------------- GridView.count  ------------- 
+    //------------- GridView.count  -------------
     // return GridView.count(
     //   crossAxisSpacing: 10.0, //水平间距
     //   mainAxisSpacing: 10.0, //垂直间距
@@ -99,21 +96,19 @@ Widget _getListBuilderData (context, index) {
     //   crossAxisCount: 2,
     //   children: this._getNewListData(),
     // );
-   //------------- GridView.count  ------------- 
+    //------------- GridView.count  -------------
 
-   //------------- GridView.builder  ------------- 
-   return GridView.builder(
-     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-       crossAxisCount: 2,
-       mainAxisSpacing: 10.0,
-       crossAxisSpacing: 10.0,
-     ),
-     itemCount: listOneData.length,
-     itemBuilder: this._getListBuilderData,
-   );
+    //------------- GridView.builder  -------------
+    return GridView.builder(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        mainAxisSpacing: 10.0,
+        crossAxisSpacing: 10.0,
+      ),
+      itemCount: listOneData.length,
+      itemBuilder: this._getListBuilderData,
+    );
 
- //------------- GridView.builder  ------------- 
-
-
+    //------------- GridView.builder  -------------
   }
 }
