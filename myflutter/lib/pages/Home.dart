@@ -47,7 +47,13 @@ class _HomeContentState extends State<HomeContent> {
               "id": 123123,
             });
           },
-        )
+        ),
+        RaisedButton(
+          child: Text("跳转商品页面"),
+          onPressed: () {
+            Navigator.pushNamed(context, '/product');
+          },
+        ),
       ],
     );
   }

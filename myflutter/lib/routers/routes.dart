@@ -3,6 +3,8 @@ import '../pages/Form.dart';
 import '../pages/SearchPage.dart';
 import '../pages/Setting.dart';
 import 'package:flutter/material.dart';
+import '../pages/Product.dart';
+import '../pages/ProductDetail.dart';
 
 final routes = {
   '/': (context) => Tabs(),
@@ -11,6 +13,10 @@ final routes = {
         arguments: arguments,
       ),
   '/setting': (context, {arguments}) => SettingPage(
+        arguments: arguments,
+      ),
+  '/product': (context) => ProductPage(),
+  '/productDetail': (context, {arguments}) => ProductDetail(
         arguments: arguments,
       ),
 };

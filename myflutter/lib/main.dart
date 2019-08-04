@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:myflutter/routers/routes.dart' as prefix0;
-import 'tabs/Tabs.dart';
 
 void main(List<String> args) {
   return runApp(MyApp());
@@ -15,7 +14,7 @@ class MyApp extends StatelessWidget {
         // '/form': (context) => FormPage(),
         // '/search': (context) => SearchPage(),
         // },
-        initialRoute: '/',
+        initialRoute: '/', //初始化时加载的路由
         onGenerateRoute: prefix0.onGenerateRoute);
   }
 }
