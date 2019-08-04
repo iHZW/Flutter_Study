@@ -2,12 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:myflutter/dataSource/listDataOne.dart';
 
 class SettingPage extends StatefulWidget {
-  SettingPage({Key key}) : super(key: key);
+  final arguments;
 
-  _SettingPageState createState() => _SettingPageState();
+  SettingPage({this.arguments, Key key}) : super(key: key);
+
+  _SettingPageState createState() =>
+      _SettingPageState(arguments: this.arguments);
 }
 
 class _SettingPageState extends State<SettingPage> {
+  final arguments;
+  _SettingPageState({this.arguments});
   List<Widget> _getSettingData() {
     var tempData = listOneData.map((value) {
       return ListTile(

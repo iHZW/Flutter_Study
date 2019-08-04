@@ -1,42 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:myflutter/routers/routes.dart' as prefix0;
 import 'tabs/Tabs.dart';
-import 'pages/Form.dart';
-import 'pages/SearchPage.dart';
 
 void main(List<String> args) {
   return runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final routes = {
-    '/form': (context) => FormPage(),
-    '/search': (context, {arguments}) => SearchPage(arguments: arguments,),
-  };
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: Tabs(),
+        // home: Tabs(),
         // routes: {
         // '/form': (context) => FormPage(),
         // '/search': (context) => SearchPage(),
         // },
-        onGenerateRoute: (RouteSettings settings) {
-          final String name = settings.name;
-          final Function pageContentBuilder = this.routes[name];
+        initialRoute: '/',
+        onGenerateRoute: prefix0.onGenerateRoute);
+  }
+}
 
-          if (pageContentBuilder != null) {
-            if (settings.arguments  != null) {
-              final Route route = MaterialPageRoute(
-                  builder: (context) => pageContentBuilder(context,
-                      arguments: settings.arguments));
-              return route;
-            } else {
-              final Route route = MaterialPageRoute(
-                  builder: (context) => pageContentBuilder(context));
-              return route;
-            }
-          }
-        });
+class HomeContents extends StatelessWidget {
+  const HomeContents({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Text("123123123"),
+    );
   }
 }
