@@ -1,11 +1,19 @@
+import 'package:flutter/material.dart';
+
 import '../tabs/Tabs.dart';
 import '../pages/Form.dart';
 import '../pages/SearchPage.dart';
 import '../pages/Setting.dart';
-import 'package:flutter/material.dart';
 import '../pages/Product.dart';
 import '../pages/ProductDetail.dart';
+import '../pages/user/Login.dart';
+import '../pages/user/RegisterFirst.dart';
+import '../pages/user/RegistSecond.dart';
+import '../pages/user/RegisterThird.dart';
+import '../pages/AppBarDemo.dart';
+import '../pages/TabBarController.dart';
 
+// 路由配置
 final routes = {
   '/': (context) => Tabs(),
   '/form': (context) => FormPage(),
@@ -19,6 +27,12 @@ final routes = {
   '/productDetail': (context, {arguments}) => ProductDetail(
         arguments: arguments,
       ),
+  '/loginPage': (context) => LoginPage(),
+  '/registFirst': (context) => RegistFirstPage(),
+  '/registSecond': (context) => RegistSecondPage(),
+  '/registThird': (context) => RegisterThirdPage(),
+  '/appBarDemo': (context) => AppbarDemoPage(),
+  '/tabBarController': (context) => TabBarControllerPage(),
 };
 
 // 固定写法

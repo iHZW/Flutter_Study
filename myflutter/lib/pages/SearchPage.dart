@@ -11,7 +11,20 @@ class SearchPage extends StatelessWidget {
         appBar: AppBar(
           title: Text("搜索"),
         ),
-        body: Text("搜搜界面内容区域${arguments != null ? arguments["id"] : "0"}"),
+        body: Center(
+          child: Column(
+            children: <Widget>[
+              SizedBox(
+                height: 20.0,
+              ),
+              Text("传参"),
+              SizedBox(
+                height: 20.0,
+              ),
+              Text("${arguments != null ? arguments["id"] : "0"}"),
+            ],
+          ),
+        ),
       ),
     );
   }

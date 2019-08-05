@@ -18,7 +18,9 @@ class _ProductPageState extends State<ProductPage> {
         subtitle: Text(value["author"]),
         onTap: () {
           Navigator.pushNamed(context, '/productDetail', arguments: {
-            "number": value["title"],
+            "title": value["title"],
+            "imageUrl": value["imageUrl"],
+            "author": value["author"]
           });
         },
       );

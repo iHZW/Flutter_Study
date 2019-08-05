@@ -17,7 +17,13 @@ class _ProductDetailState extends State<ProductDetail> {
       appBar: AppBar(
         title: Text("商品详情"),
       ),
-      body: Text("${this.arguments["number"]}"),
+      body: ListTile(
+        leading: CircleAvatar(
+          backgroundImage: NetworkImage(this.arguments["imageUrl"]),
+        ),
+        title: Text(this.arguments["title"]),
+        subtitle: Text(this.arguments["author"]),
+      ),
     );
   }
 }

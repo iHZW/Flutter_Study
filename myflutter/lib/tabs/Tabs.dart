@@ -4,13 +4,18 @@ import 'package:myflutter/pages/Setting.dart';
 import 'package:myflutter/pages/CategoryPage.dart';
 
 class Tabs extends StatefulWidget {
-  Tabs({Key key}) : super(key: key);
+  final currentIndex;
+  Tabs({Key key, this.currentIndex = 0}) : super(key: key);
 
-  _TabsState createState() => _TabsState();
+  _TabsState createState() => _TabsState(this.currentIndex);
 }
 
 class _TabsState extends State<Tabs> {
-  int _currentIndex = 0;
+  int _currentIndex;
+  _TabsState(index) {
+    this._currentIndex = index;
+  }
+
   List _pageList = [
     HomeContent(),
     CategoryPage(),
@@ -20,9 +25,9 @@ class _TabsState extends State<Tabs> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Stack 组件"),
-      ),
+      // appBar: AppBar(
+      //   title: Text("Stack 组件"),
+      // ),
       body: this._pageList[this._currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: this._currentIndex,
@@ -49,6 +54,69 @@ class _TabsState extends State<Tabs> {
           ),
         ],
       ),
+      // drawer: Drawer(
+      //   child: Center(
+      //     child: Column(
+      //       children: <Widget>[
+      //         Row(
+      //           children: <Widget>[
+      //             Expanded(
+      //               child: DrawerHeader(
+      //                 child: Text("你好Flutter!"),
+      //                 decoration: BoxDecoration(
+      //                     color: Colors.yellow,
+      //                     image: DecorationImage(
+      //                         fit: BoxFit.cover,
+      //                         image: NetworkImage(
+      //                             "https://www.itying.com/images/flutter/3.png"))),
+      //               ),
+      //             ),
+      //           ],
+      //         ),
+      //         Divider(),
+      //         ListTile(
+      //           leading: CircleAvatar(
+      //             child: Icon(Icons.home),
+      //           ),
+      //           title: Text("我的"),
+      //         ),
+      //         Divider(),
+      //         ListTile(
+      //           leading: CircleAvatar(
+      //             child: Icon(Icons.people),
+      //           ),
+      //           title: Text("zhongxin"),
+      //         ),
+      //         Divider(),
+      //       ],
+      //     ),
+      //   ),
+      // ),
+
+      //   endDrawer: Drawer(
+      //     child: Column(
+      //       children: <Widget>[
+      //         Row(
+      //           children: <Widget>[
+      //             Expanded(
+      //               child: DrawerHeader(
+      //                 child: Text("你好Flutter!!!"),
+      //                 decoration: BoxDecoration(
+      //                   image: DecorationImage(
+      //                       image: NetworkImage(
+      //                           "https://www.itying.com/images/flutter/4.png"),
+      //                       fit: BoxFit.cover),
+      //                 ),
+      //               ),
+      //             ),
+      //           ],
+      //         ),
+      //         // ListTile(
+      //         //   leading: Icon(Icons.ring_volume),
+      //         // )
+      //       ],
+      //     ),
+      //   ),
     );
   }
 }
