@@ -89,9 +89,9 @@ class HomeContent extends StatelessWidget {
   Widget build(BuildContext context) {
     //------------- GridView.count  -------------
     // return GridView.count(
-    //   crossAxisSpacing: 10.0, //水平间距
-    //   mainAxisSpacing: 10.0, //垂直间距
-    //   childAspectRatio: 1.0, //宽和高的比值
+    // crossAxisSpacing: 10.0, //水平间距
+    // mainAxisSpacing: 10.0, //垂直间距
+    // childAspectRatio: 1.0, //宽和高的比值
     //   padding: EdgeInsets.all(10.0),
     //   crossAxisCount: 2,
     //   children: this._getNewListData(),
