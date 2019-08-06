@@ -112,18 +112,23 @@ class _TabBarControllerPageState extends State<TabBarControllerPage>
 }
 
 class MyButton extends StatelessWidget {
-
   final text;
   final pressed;
   final width;
   final height;
-  const MyButton({Key key, this.text='', this.pressed=null, this.width=80.0, this.height = 30.0}) : super(key: key);
+  const MyButton(
+      {Key key,
+      this.text = '',
+      this.pressed = null,
+      this.width = 80.0,
+      this.height = 30.0})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Container(
-        height: 100.0
+        height: 100.0,
         width: 100.0,
         child: RaisedButton(
           onPressed: () {},

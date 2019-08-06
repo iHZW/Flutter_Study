@@ -55,9 +55,12 @@ class _TotalNavigationPageState extends State<TotalNavigationPage> {
                     physics: const NeverScrollableScrollPhysics(),
                     // childAspectRatio: 1.0, //宽和高的比值
                     children: <Widget>[
-                      ItemViewDemo("新股申购", "images/xgsg.png"),
-                      ItemViewDemo("模拟炒股", "images/mncg.png"),
-                      ItemViewDemo("决策工具", "images/jcgj.png"),
+                      ItemAllViewDemo("新股申购", "images/xgsg.png",
+                          subImageUrl: "images/hot.png"),
+                      ItemAllViewDemo("模拟炒股", "images/mncg.png",
+                          subImageUrl: "images/hot.png"),
+                      ItemAllViewDemo("决策工具", "images/jcgj.png",
+                          subImageUrl: "images/hot.png"),
                       ItemViewDemo("猜涨跌", "images/czd.png"),
                       ItemViewDemo("授权兑换码", "images/sqmdh.png"),
                       ItemViewDemo("办卡赢权益", "images/bkyqy.png"),
@@ -156,10 +159,10 @@ class _TotalNavigationPageState extends State<TotalNavigationPage> {
                     physics: const NeverScrollableScrollPhysics(),
                     // childAspectRatio: 1.0, //宽和高的比值
                     children: <Widget>[
-                      ItemViewDemo("活期理财", "images/hqlc.png"),
-                      ItemViewDemo("稳健理财", "images/wjlc.png"),
-                      ItemViewDemo("基金理财", "images/jjlc.png"),
-                      ItemViewDemo("理财服务", "images/lcfw.png"),
+                      ItemViewDemo("活期理财", "images/gg.png"),
+                      ItemViewDemo("稳健理财", "images/czd.png"),
+                      ItemViewDemo("基金理财", "images/jy.png"),
+                      ItemViewDemo("理财服务", "images/zxg.png"),
                     ],
                   ),
                 ),
@@ -206,7 +209,7 @@ class _TotalNavigationPageState extends State<TotalNavigationPage> {
                       ItemViewDemo("账户检测", "images/zhjc.png"),
                       ItemViewDemo("修改密码", "images/xgmm.png"),
                       ItemViewDemo("创业板开通", "images/cybkt.png"),
-                      ItemViewDemo("一账通账户", "images/yztzh.png"),
+                      ItemViewDemo("一账通账户", "images/pysq.png"),
                       ItemViewDemo("更多业务", "images/gdyw.png"),
                     ],
                   ),
@@ -254,7 +257,7 @@ class _TotalNavigationPageState extends State<TotalNavigationPage> {
                       ItemViewDemo("智能选股", "images/znxg.png"),
                       ItemViewDemo("数据中心", "images/sjzx.png"),
                       ItemViewDemo("股市直播", "images/gszb.png"),
-                      ItemViewDemo("买盘高手", "images/mpgs.png"),
+                      ItemViewDemo("买盘高手", "images/zxg.png"),
                     ],
                   ),
                 ),
@@ -299,8 +302,8 @@ class _TotalNavigationPageState extends State<TotalNavigationPage> {
                     // childAspectRatio: 1.0, //宽和高的比值
                     children: <Widget>[
                       ItemViewDemo("自选股", "images/zxg.png"),
-                      ItemViewDemo("我的圈子", "images/wdqz.png"),
-                      ItemViewDemo("股友社区", "images/gysq.png"),
+                      ItemViewDemo("我的圈子", "images/wgjc.png"),
+                      ItemViewDemo("股友社区", "images/spgs.png"),
                       ItemViewDemo("我的积分", "images/wdjf.png"),
                     ],
                   ),
@@ -345,9 +348,9 @@ class _TotalNavigationPageState extends State<TotalNavigationPage> {
                     physics: const NeverScrollableScrollPhysics(),
                     // childAspectRatio: 1.0, //宽和高的比值
                     children: <Widget>[
-                      ItemViewDemo("K线速成班", "images/kxscb.png"),
-                      ItemViewDemo("投教园地", "images/tjyd.png"),
-                      ItemViewDemo("新人专区", "images/xrzq.png"),
+                      ItemViewDemo("K线速成班", "images/czd.png"),
+                      ItemViewDemo("投教园地", "images/kxds.png"),
+                      ItemViewDemo("新人专区", "images/zhjc.png"),
                     ],
                   ),
                 ),
@@ -377,10 +380,11 @@ class ItemAllViewDemo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RaisedButton(
+    return FlatButton(
       splashColor: Colors.white,
       color: Colors.white,
       child: Column(
+        // mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           SizedBox(
             height: 10.0,
@@ -389,41 +393,55 @@ class ItemAllViewDemo extends StatelessWidget {
             children: <Widget>[
               Positioned(
                 child: Container(
-                  height: 50.0,
-                  width: 60.0,
+                  height: 60.0,
+                  width: 70.0,
+                ),
+              ),
+              Positioned(
+                top: 15.0,
+                left: 15.0,
+                child: Image(
+                  image: AssetImage(this.imageUrl),
+                  height: 30.0,
+                  width: 30.0,
+                  fit: BoxFit.cover,
                 ),
               ),
               Positioned(
                 top: 10.0,
-                left: 15.0,
-                child: Image(
-                  image: AssetImage(this.imageUrl),
-                  height: 35.0,
-                  width: 35.0,
-                  fit: BoxFit.cover,
-                ),
-              ),
-              Positioned(
-                top: 0,
                 right: 0,
                 child: Image(
                   alignment: Alignment.topRight,
                   image: AssetImage(this.subImageUrl),
-                  height: 10.0,
-                  width: 20.0,
-                  fit: BoxFit.cover,
+                  height: 15.0,
+                  width: 26.0,
+                  fit: BoxFit.fitWidth,
                 ),
               ),
             ],
           ),
-          Container(
-            // width: 65.0,
-            alignment: Alignment.center,
-            child: Text(
-              this.itemName,
-              style: TextStyle(fontSize: 12.0),
-            ),
+          Row(
+            children: <Widget>[
+              Expanded(
+                child: Text(
+                  this.itemName,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 12.0),
+                ),
+              ),
+              SizedBox(
+                width: 10.0,
+              )
+            ],
           )
+          // Container(
+          //   // width: 65.0,
+          //   alignment: Alignment.center,
+          // child: Text(
+          //   this.itemName,
+          //   style: TextStyle(fontSize: 12.0),
+          // ),
+          // )
         ],
       ),
       onPressed: () {
@@ -437,6 +455,91 @@ class ItemAllViewDemo extends StatelessWidget {
     );
   }
 }
+
+// class ItemViewDemo extends StatelessWidget {
+//   String itemName;
+//   String imageUrl;
+//   String subImageUrl;
+//   ItemViewDemo(
+//     this.itemName,
+//     this.imageUrl, {
+//     Key key,
+//     this.subImageUrl,
+//   }) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return FlatButton(
+//       // elevation: 0,
+//       splashColor: Colors.white,
+//       color: Colors.white,
+//       child: Column(
+//         // mainAxisAlignment: MainAxisAlignment.center,
+//         children: <Widget>[
+//           SizedBox(
+//             height: 10.0,
+//           ),
+//           Stack(
+//             children: <Widget>[
+//               Positioned(
+//                 child: Container(
+//                   height: 50.0,
+//                   width: 60.0,
+//                   // color: Colors.white10,
+//                 ),
+//               ),
+//               Positioned(
+//                 top: 10.0,
+//                 left: 15.0,
+//                 // child: Image(
+//                 //   // image: AssetImage(this.imageUrl),
+//                 //   image: ,
+//                 //   height: 35.0,
+//                 //   width: 35.0,
+//                 //   fit: BoxFit.cover,
+//                 // ),
+//                 child: Image.asset(
+//                   this.imageUrl,
+//                   height: 35.0,
+//                   width: 35.0,
+//                   fit: BoxFit.cover,
+//                 ),
+//               ),
+
+//               // Positioned(
+//               //   top: 0,
+//               //   right: 0,
+//               //   child: Image(
+//               //     alignment: Alignment.topRight,
+//               //     image: AssetImage(this.subImageUrl),
+//               //     height: 10.0,
+//               //     width: 20.0,
+//               //     fit: BoxFit.cover,
+//               //   ),
+//               // ),
+//             ],
+//           ),
+//           Container(
+//             // width: 65.0,
+//             alignment: Alignment.center,
+//             child: Text(
+//               this.itemName,
+//               style: TextStyle(fontSize: 12.0),
+//             ),
+//           )
+//         ],
+//       ),
+//       onPressed: () {
+//         // Navigator.pushNamed(context, '/luckDetailPage');
+//         Navigator.pushNamed(context, '/webViewPage', arguments: {
+//           "title": this.itemName,
+//           "url":
+//               "https://m.stock.pingan.com/static/valueservice/servicesale/index.html",
+//         });
+//       },
+//     );
+//   }
+// }
 
 class ItemViewDemo extends StatelessWidget {
   String itemName;
@@ -452,62 +555,58 @@ class ItemViewDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FlatButton(
-      // elevation: 0,
       splashColor: Colors.white,
       color: Colors.white,
       child: Column(
+        // mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           SizedBox(
             height: 10.0,
           ),
-          Stack(
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Positioned(
-                child: Container(
-                  height: 50.0,
-                  width: 60.0,
-                  // color: Colors.white10,
-                ),
-              ),
-              Positioned(
-                top: 10.0,
-                left: 15.0,
-                // child: Image(
-                //   // image: AssetImage(this.imageUrl),
-                //   image: ,
-                //   height: 35.0,
-                //   width: 35.0,
-                //   fit: BoxFit.cover,
-                // ),
-                child: Image.asset(
-                  this.imageUrl,
-                  height: 35.0,
-                  width: 35.0,
-                  fit: BoxFit.cover,
-                ),
-              ),
-
-              // Positioned(
-              //   top: 0,
-              //   right: 0,
-              //   child: Image(
-              //     alignment: Alignment.topRight,
-              //     image: AssetImage(this.subImageUrl),
-              //     height: 10.0,
-              //     width: 20.0,
-              //     fit: BoxFit.cover,
-              //   ),
-              // ),
+              Stack(
+                children: <Widget>[
+                  Positioned(
+                    child: Container(
+                      height: 60.0,
+                      width: 60.0,
+                    ),
+                  ),
+                  Positioned(
+                    top: 15.0,
+                    left: 15.0,
+                    child: Image(
+                      image: AssetImage(this.imageUrl),
+                      height: 30.0,
+                      width: 30.0,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ],
+              )
             ],
           ),
-          Container(
-            // width: 65.0,
-            alignment: Alignment.center,
-            child: Text(
-              this.itemName,
-              style: TextStyle(fontSize: 12.0),
-            ),
+          Row(
+            children: <Widget>[
+              Expanded(
+                child: Text(
+                  this.itemName,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 12.0),
+                ),
+              )
+            ],
           )
+          // Container(
+          //   // width: 65.0,
+          //   alignment: Alignment.center,
+          // child: Text(
+          //   this.itemName,
+          //   style: TextStyle(fontSize: 12.0),
+          // ),
+          // )
         ],
       ),
       onPressed: () {
