@@ -342,7 +342,10 @@ class ItemViewDemo extends StatelessWidget {
         ],
       ),
       onPressed: () {
-        print(this.itemName);
+        // Navigator.pushNamed(context, '/luckDetailPage');
+        Navigator.pushNamed(context, '/webViewPage', arguments: {
+          "title": this.itemName,
+        });
       },
     );
   }

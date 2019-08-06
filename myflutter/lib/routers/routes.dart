@@ -13,6 +13,9 @@ import '../pages/user/RegisterThird.dart';
 import '../pages/AppBarDemo.dart';
 import '../pages/TabBarController.dart';
 import '../pages/LuckPage.dart';
+import '../pages/LuckDetailPage.dart';
+import '../pages/WebViewPage.dart';
+import '../pages/TotalNavigationPage.dart';
 
 // 路由配置
 final routes = {
@@ -35,6 +38,11 @@ final routes = {
   '/appBarDemo': (context) => AppbarDemoPage(),
   '/tabBarController': (context) => TabBarControllerPage(),
   '/luckPage': (context) => LuckPage(),
+  '/luckDetailPage': (context) => LuckDetailPage(),
+  '/webViewPage': (context, {arguments}) => WebViewPage(
+        arguments: arguments,
+      ),
+  '/totalNavigationPage': (context) => TotalNavigationPage(),
 };
 
 // 固定写法

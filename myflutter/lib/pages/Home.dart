@@ -321,6 +321,18 @@ class _HomeContentState extends State<HomeContent> {
                 onTap: () {
                   Navigator.pushNamed(context, '/luckPage');
                 },
+              ),
+              ListTile(
+                title: Text("进入WebViewPage测试界面"),
+                onTap: () {
+                  Navigator.pushNamed(context, '/webViewPage');
+                },
+              ),
+              ListTile(
+                title: Text("进入全站导航"),
+                onTap: () {
+                  Navigator.pushNamed(context, '/totalNavigationPage');
+                },
               )
             ],
           ),
