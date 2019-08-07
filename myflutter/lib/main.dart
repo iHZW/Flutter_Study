@@ -5,18 +5,32 @@ void main(List<String> args) {
   return runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  MyApp({Key key}) : super(key: key);
+
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    super.initState();
+
+    ///register page widget builders,the key is pageName
+    FlutterBoost.singleton.registerPageBuilders({
+      'sample://firstPage': (pageName, params, _) => FirstRouteWidget(),
+      'sample://secondPage': (pageName, params, _) => SecondRouteWidget(),
+    });
+
+    ///query current top page and load it
+    FlutterBoost.handleOnStartPage();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-
-        // home: Tabs(),
-        // routes: {
-        // '/form': (context) => FormPage(),
-        // '/search': (context) => SearchPage(),
-        // },
-        initialRoute: '/tabBarController', //初始化时加载的路由
+        initialRoute: '/', //初始化时加载的路由
         onGenerateRoute: prefix0.onGenerateRoute);
   }
 }
