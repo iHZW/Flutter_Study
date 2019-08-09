@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:http/http.dart' as http;
 
-class LuckDetailPage extends StatefulWidget {
+class Widget_WebView_Page extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     return Widget_WebView_State();
   }
 }
 
-class Widget_WebView_State extends State<LuckDetailPage>
+class Widget_WebView_State extends State<Widget_WebView_Page>
     with SingleTickerProviderStateMixin {
   FlutterWebviewPlugin flutterWebviewPlugin = FlutterWebviewPlugin();
   var title = "WebView组件";
@@ -119,7 +119,7 @@ class Widget_WebView_State extends State<LuckDetailPage>
         child: GestureDetector(
           child: Text("加载指定url"),
           onTap: () {
-            flutterWebviewPlugin.reloadUrl("https://www.baidu.com");
+            flutterWebviewPlugin.reloadUrl("https://www.360.com");
           },
         ),
       ),
@@ -133,11 +133,17 @@ class Widget_WebView_State extends State<LuckDetailPage>
     return WebviewScaffold(
       url: "https://www.baidu.com",
       //默认加载地址
+
       appBar: AppBar(
         title: Text(title),
         backgroundColor: Colors.grey,
         leading: GestureDetector(
-          child: Icon(Icons.arrow_back),
+          child: Container(
+            width: 60.0,
+            height: 60.0,
+            color: Colors.blue,
+            child: Icon(Icons.arrow_back),
+          ),
           onTap: () {
             flutterWebviewPlugin.close();
           },
@@ -208,3 +214,33 @@ class Widget_WebView_State extends State<LuckDetailPage>
     flutterWebviewPlugin.evalJavascript("abc(${title}')").then((result) {});
   }
 }
+
+/**
+ *
+ * const WebviewScaffold({
+    Key key,
+    this.appBar,
+    @required this.url,
+    this.headers,//
+    this.withJavascript,//是否允许执行js代码
+    this.clearCache,//
+    this.clearCookies,//
+    this.enableAppScheme,//
+    this.userAgent,//
+    this.primary = true,//
+    this.persistentFooterButtons,//
+    this.bottomNavigationBar,//
+    this.withZoom,//是否允许网页缩放
+    this.withLocalStorage,//是否允许LocalStorage
+    this.withLocalUrl,//
+    this.scrollBar,//是否显示滚动条
+    this.supportMultipleWindows,//
+    this.appCacheEnabled,//
+    this.hidden = false,//
+    this.initialChild,//
+    this.allowFileURLs,//
+    this.resizeToAvoidBottomInset = false,//
+    this.invalidUrlRegex,//
+    this.geolocationEnabled//
+    })
+ */

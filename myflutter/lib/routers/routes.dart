@@ -38,10 +38,8 @@ final routes = {
   '/appBarDemo': (context) => AppbarDemoPage(),
   '/tabBarController': (context) => TabBarControllerPage(),
   '/luckPage': (context) => LuckPage(),
-  '/luckDetailPage': (context) => LuckDetailPage(),
-  '/webViewPage': (context, {arguments}) => WebViewPage(
-        arguments: arguments,
-      ),
+  '/luckDetailPage': (context) => Widget_WebView_Page(),
+  '/webViewPage': (context, {arguments}) => WebViewPage(arguments: arguments),
   '/totalNavigationPage': (context) => TotalNavigationPage(),
 };
 

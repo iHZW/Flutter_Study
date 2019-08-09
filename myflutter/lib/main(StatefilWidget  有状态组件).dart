@@ -72,7 +72,10 @@ class _HomefulPageState extends State<HomefulPage> {
               this.myName = "${this.countNumbe}";
             });
           },
-        )
+        ),
+        SizedBox(
+          height: 20.0,
+        ),
       ],
     );
   }

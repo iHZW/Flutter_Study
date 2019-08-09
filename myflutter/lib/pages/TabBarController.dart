@@ -92,10 +92,18 @@ class _TabBarControllerPageState extends State<TabBarControllerPage>
                         child: Text("ButtonBar1"),
                         onPressed: () {},
                       ),
-                      RaisedButton(
-                        child: Text("ButtonBar2"),
-                        onPressed: () {},
+                      MyButton(
+                        text: "你好啊!",
+                        pressed: () {
+                          print("自定义Button");
+                        },
                       ),
+                      MyFloatingAcotionBtn(
+                        text: "我是Floating",
+                        onPressed: () {
+                          print("我是Floating");
+                        },
+                      )
                     ],
                   )
                 ],
@@ -131,8 +139,32 @@ class MyButton extends StatelessWidget {
         height: 100.0,
         width: 100.0,
         child: RaisedButton(
-          onPressed: () {},
+          child: Text(this.text),
+          onPressed: this.pressed,
         ),
+      ),
+    );
+  }
+}
+
+class MyFloatingAcotionBtn extends StatelessWidget {
+  final text;
+  final onPressed;
+  MyFloatingAcotionBtn({this.text, this.onPressed});
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Container(
+      width: 80.0,
+      height: 80.0,
+      child: FloatingActionButton(
+        backgroundColor: Colors.pink,
+        child: Text(
+          this.text,
+          textAlign: TextAlign.center,
+        ),
+        onPressed: this.onPressed,
       ),
     );
   }

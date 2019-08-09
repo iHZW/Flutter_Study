@@ -20,6 +20,7 @@ class _TotalNavigationPageState extends State<TotalNavigationPage> {
           ),
           Container(
             height: 240,
+            color: Colors.white,
             child: Column(
               children: <Widget>[
                 Container(
@@ -611,11 +612,18 @@ class ItemViewDemo extends StatelessWidget {
       ),
       onPressed: () {
         // Navigator.pushNamed(context, '/luckDetailPage');
-        Navigator.pushNamed(context, '/webViewPage', arguments: {
-          "title": this.itemName,
-          "url":
-              "https://m.stock.pingan.com/static/valueservice/servicesale/index.html",
-        });
+
+        if (this.itemName == "新股申购" ||
+            this.itemName == "模拟炒股" ||
+            this.itemName == "决策工具") {
+          Navigator.pushNamed(context, '/luckDetailPage');
+        } else {
+          Navigator.pushNamed(context, '/webViewPage', arguments: {
+            "title": this.itemName,
+            "url":
+                "https://m.stock.pingan.com/static/valueservice/servicesale/index.html",
+          });
+        }
       },
     );
   }

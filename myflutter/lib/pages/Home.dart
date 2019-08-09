@@ -14,6 +14,10 @@ class _HomeContentState extends State<HomeContent> {
   List tempList = List();
   int countNum = 0;
 
+  var _flag = true;
+  int _sex = 1;
+  int _sexNew = 1;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -95,6 +99,83 @@ class _HomeContentState extends State<HomeContent> {
                       },
                     ),
                     Divider(),
+                    Checkbox(
+                      value: this._flag,
+                      onChanged: (bool value) {
+                        setState(() {
+                          this._flag = value;
+                        });
+                      },
+                    ),
+                    Divider(),
+                    CheckboxListTile(
+                      title: Text("姓名"),
+                      subtitle: Text("HZW"),
+                      value: this._flag,
+                      onChanged: (bool value) {
+                        setState(() {
+                          this._flag = value;
+                        });
+                      },
+                    ),
+                    Divider(),
+                    Row(
+                      children: <Widget>[
+                        Text("男:"),
+
+                        //按钮组  必须两个
+                        Radio(
+                          value: 1,
+                          onChanged: (value) {
+                            setState(() {
+                              this._sex = value;
+                            });
+                          },
+                          groupValue: this._sex,
+                        ),
+                        Text("女:"),
+                        Radio(
+                          value: 2,
+                          onChanged: (value) {
+                            setState(() {
+                              this._sex = value;
+                            });
+                          },
+                          groupValue: this._sex,
+                        ),
+
+                        SizedBox(
+                          width: 30,
+                        ),
+                        Text("${this._sex}"),
+                        Text("${this._sex == 1 ? "男" : "女"}")
+                      ],
+                    ),
+                    Divider(),
+                    Divider(),
+                    RadioListTile(
+                      title: Text("我的"),
+                      subtitle: Text("我们的"),
+                      value: 1,
+                      onChanged: (value) {
+                        setState(() {
+                          this._sexNew = value;
+                        });
+                      },
+                      groupValue: this._sexNew,
+                    ),
+                    Divider(),
+                    RadioListTile(
+                      title: Text("你的"),
+                      subtitle: Text("我们的"),
+                      value: 2,
+                      onChanged: (value) {
+                        setState(() {
+                          this._sexNew = value;
+                        });
+                      },
+                      groupValue: this._sexNew,
+                    ),
                   ],
                 ),
               )
@@ -231,7 +312,7 @@ class _HomeContentState extends State<HomeContent> {
               ListTile(
                 title: Text("进入WebViewPage测试界面"),
                 onTap: () {
-                  Navigator.pushNamed(context, '/webViewPage');
+                  Navigator.pushNamed(context, '/luckDetailPage');
                 },
               ),
               ListTile(
@@ -239,7 +320,7 @@ class _HomeContentState extends State<HomeContent> {
                 onTap: () {
                   Navigator.pushNamed(context, '/totalNavigationPage');
                 },
-              )
+              ),
             ],
           ),
         ));

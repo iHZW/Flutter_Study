@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_boost/flutter_boost.dart';
 import 'package:myflutter/routers/routes.dart' as prefix0;
 
 void main(List<String> args) {
@@ -18,8 +19,8 @@ class _MyAppState extends State<MyApp> {
 
     ///register page widget builders,the key is pageName
     FlutterBoost.singleton.registerPageBuilders({
-      'sample://firstPage': (pageName, params, _) => FirstRouteWidget(),
-      'sample://secondPage': (pageName, params, _) => SecondRouteWidget(),
+      // 'sample://firstPage': (pageName, params, _) => FirstRouteWidget(),
+      // 'sample://secondPage': (pageName, params, _) => SecondRouteWidget(),
     });
 
     ///query current top page and load it
