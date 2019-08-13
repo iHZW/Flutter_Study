@@ -569,6 +569,9 @@ class ItemViewDemo extends StatelessWidget {
             children: <Widget>[
               Stack(
                 children: <Widget>[
+                  Image(
+                    image: NetworkImage("https:/3224324"),
+                  ),
                   Positioned(
                     child: Container(
                       height: 60.0,

@@ -321,6 +321,41 @@ class _HomeContentState extends State<HomeContent> {
                   Navigator.pushNamed(context, '/totalNavigationPage');
                 },
               ),
+              Container(
+                color: Colors.blue,
+                // height: 50.0,
+                child: ListTile(
+                  // dense: true,
+                  title: Text(
+                    "进入全站导航New",
+                    // style: TextStyle(fontSize: 15.0),
+                  ),
+                  // subtitle: Text("你好吗?"),
+                  trailing: Container(
+                    width: 100.0,
+                    // height: 15.0,
+                    color: Colors.red,
+                    child: Row(
+                      children: <Widget>[
+                        Expanded(
+                          flex: 2,
+                          child: Text("我能!!!"),
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: IconButton(
+                            icon: Icon(Icons.arrow_back),
+                            onPressed: () {},
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  onTap: () {
+                    Navigator.pushNamed(context, '/totalNavigationPage');
+                  },
+                ),
+              )
             ],
           ),
         ));
