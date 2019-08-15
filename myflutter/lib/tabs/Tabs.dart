@@ -32,22 +32,6 @@ class _TabsState extends State<Tabs> {
     UserCenterPage(),
   ];
 
-// BottomNavigationBarItem(
-//             icon: Icon(Icons.home),
-//             title: Text("首页"),
-//           ),
-//           BottomNavigationBarItem(
-//             icon: Icon(Icons.category),
-//             title: Text("分类"),
-//           ),
-//           BottomNavigationBarItem(
-//             icon: Icon(Icons.settings),
-//             title: Text("设置"),
-//           ),
-//           BottomNavigationBarItem(
-//               icon: Icon(Icons.supervised_user_circle), title: Text("我的")),
-//         ],
-
   final itemNames = [
     _Item(name: "首页", tabIcon: Icon(Icons.home)),
     _Item(name: "分类", tabIcon: Icon(Icons.category)),
@@ -63,9 +47,9 @@ class _TabsState extends State<Tabs> {
     if (itemList == null) {
       itemList = itemNames
           .map((item) => BottomNavigationBarItem(
-                title: Text(item.name),
-                icon: item.tabIcon,
-              ))
+              title: Text(item.name),
+              icon: item.tabIcon,
+              activeIcon: Icon(Icons.new_releases)))
           .toList();
     }
   }
@@ -157,69 +141,6 @@ class _TabsState extends State<Tabs> {
         //       icon: Icon(Icons.supervised_user_circle), title: Text("我的")),
         // ],
       ),
-      // drawer: Drawer(
-      //   child: Center(
-      //     child: Column(
-      //       children: <Widget>[
-      //         Row(
-      //           children: <Widget>[
-      //             Expanded(
-      //               child: DrawerHeader(
-      //                 child: Text("你好Flutter!"),
-      //                 decoration: BoxDecoration(
-      //                     color: Colors.yellow,
-      //                     image: DecorationImage(
-      //                         fit: BoxFit.cover,
-      //                         image: NetworkImage(
-      //                             "https://www.itying.com/images/flutter/3.png"))),
-      //               ),
-      //             ),
-      //           ],
-      //         ),
-      //         Divider(),
-      //         ListTile(
-      //           leading: CircleAvatar(
-      //             child: Icon(Icons.home),
-      //           ),
-      //           title: Text("我的"),
-      //         ),
-      //         Divider(),
-      //         ListTile(
-      //           leading: CircleAvatar(
-      //             child: Icon(Icons.people),
-      //           ),
-      //           title: Text("zhongxin"),
-      //         ),
-      //         Divider(),
-      //       ],
-      //     ),
-      //   ),
-      // ),
-
-      //   endDrawer: Drawer(
-      //     child: Column(
-      //       children: <Widget>[
-      //         Row(
-      //           children: <Widget>[
-      //             Expanded(
-      //               child: DrawerHeader(
-      //                 child: Text("你好Flutter!!!"),
-      //                 decoration: BoxDecoration(
-      //                   image: DecorationImage(
-      //                       image: NetworkImage(
-      //                           "https://www.itying.com/images/flutter/4.png"),
-      //                       fit: BoxFit.cover),
-      //                 ),
-      //               ),
-      //             ),
-      //           ],
-      //         ),
-      //         // ListTile(
-      //         //   leading: Icon(Icons.ring_volume),
-      //         // )
-      //       ],
-      //     ),
-      //   ),
     );
   }
 }
