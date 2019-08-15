@@ -25,7 +25,6 @@ class MyApp extends StatelessWidget {
 class HomeContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     // return Wrap(
     //   spacing: 10.0,
     //   alignment: WrapAlignment.center,
@@ -112,7 +111,6 @@ class MyButton extends StatelessWidget {
   const MyButton(this.text, {Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return RaisedButton(
       color: Colors.white,
       textColor: Theme.of(context).accentColor,

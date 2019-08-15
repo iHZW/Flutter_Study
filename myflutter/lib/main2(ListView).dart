@@ -45,7 +45,6 @@ class HomeContent extends StatelessWidget {
 class ListViewContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return ListView(padding: EdgeInsets.all(15), children: <Widget>[
       ListTile(
         leading: Icon(

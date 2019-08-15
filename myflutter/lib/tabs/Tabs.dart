@@ -4,12 +4,19 @@ import 'package:myflutter/pages/Setting.dart';
 import 'package:myflutter/pages/CategoryPage.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:toast/toast.dart';
+import 'package:myflutter/pages/my/UserCenterPage.dart';
 
 class Tabs extends StatefulWidget {
   final currentIndex;
   Tabs({Key key, this.currentIndex = 0}) : super(key: key);
 
   _TabsState createState() => _TabsState(this.currentIndex);
+}
+
+class _Item {
+  String name;
+  Icon tabIcon;
+  _Item({this.name, this.tabIcon});
 }
 
 class _TabsState extends State<Tabs> {
@@ -22,7 +29,46 @@ class _TabsState extends State<Tabs> {
     HomeContent(),
     CategoryPage(),
     SettingPage(),
+    UserCenterPage(),
   ];
+
+// BottomNavigationBarItem(
+//             icon: Icon(Icons.home),
+//             title: Text("首页"),
+//           ),
+//           BottomNavigationBarItem(
+//             icon: Icon(Icons.category),
+//             title: Text("分类"),
+//           ),
+//           BottomNavigationBarItem(
+//             icon: Icon(Icons.settings),
+//             title: Text("设置"),
+//           ),
+//           BottomNavigationBarItem(
+//               icon: Icon(Icons.supervised_user_circle), title: Text("我的")),
+//         ],
+
+  final itemNames = [
+    _Item(name: "首页", tabIcon: Icon(Icons.home)),
+    _Item(name: "分类", tabIcon: Icon(Icons.category)),
+    _Item(name: "设置", tabIcon: Icon(Icons.settings)),
+    _Item(name: "我的", tabIcon: Icon(Icons.supervised_user_circle)),
+  ];
+
+  List<BottomNavigationBarItem> itemList;
+
+  @override
+  void initState() {
+    super.initState();
+    if (itemList == null) {
+      itemList = itemNames
+          .map((item) => BottomNavigationBarItem(
+                title: Text(item.name),
+                icon: item.tabIcon,
+              ))
+          .toList();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -93,20 +139,23 @@ class _TabsState extends State<Tabs> {
         // iconSize: 20.0, //icon大小
         // fixedColor: Colors.red,  //选中颜色
         type: BottomNavigationBarType.fixed, //设置允许多个tab
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text("首页"),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.category),
-            title: Text("分类"),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            title: Text("设置"),
-          ),
-        ],
+        items: itemList,
+        // [
+        //   BottomNavigationBarItem(
+        //     icon: Icon(Icons.home),
+        //     title: Text("首页"),
+        //   ),
+        //   BottomNavigationBarItem(
+        //     icon: Icon(Icons.category),
+        //     title: Text("分类"),
+        //   ),
+        //   BottomNavigationBarItem(
+        //     icon: Icon(Icons.settings),
+        //     title: Text("设置"),
+        //   ),
+        //   BottomNavigationBarItem(
+        //       icon: Icon(Icons.supervised_user_circle), title: Text("我的")),
+        // ],
       ),
       // drawer: Drawer(
       //   child: Center(

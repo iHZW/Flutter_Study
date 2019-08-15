@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart' as prefix0;
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'SearchPage.dart';
 import 'package:myflutter/pages/AppBarDemo.dart';
 import '../tabs/Tabs.dart';
@@ -263,10 +264,19 @@ class _HomeContentState extends State<HomeContent> {
                   // Navigator.pushNamed(context, '/search', arguments: {
                   //   "id": 123,
                   // });R
-                  Navigator.pushNamed(context, '/search', arguments: {
-                    "id": 123123,
-                  });
+                  Navigator.pushNamed(context, '/search',
+                      arguments: {"id": 123123});
                 },
+              ),
+              Container(
+                height: ScreenUtil.screenWidth / 10,
+                child: FlatButton(
+                  child: Text("跳转搜索界面传参"),
+                  onPressed: () {
+                    Router.push(
+                        context, Router.searchPage, {"id": "首页=>搜索=>传参"});
+                  },
+                ),
               ),
               RaisedButton(
                 child: Text("跳转商品页面"),
@@ -396,12 +406,6 @@ class _HomeContentState extends State<HomeContent> {
                 },
               ),
               Divider(),
-              FlatButton(
-                child: Text("调换搜索界面"),
-                onPressed: () {
-                  Router.push(context, Router.searchPage, {"id": "首页=>搜索=>传参"});
-                },
-              ),
             ],
           ),
         ));
