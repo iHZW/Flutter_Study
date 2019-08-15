@@ -3,6 +3,9 @@ import 'dataSource/listDataOne.dart';
 
 void main(List<String> args) {
   return runApp(MyApp());
+  // if (Platform.isAndroid) {
+
+  // }
 }
 
 class MyApp extends StatelessWidget {

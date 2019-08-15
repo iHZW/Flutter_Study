@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myflutter/pages/Setting.dart';
 
 class FormPage extends StatefulWidget {
-  String title;
+  final String title;
 
   FormPage({Key key, this.title = "表单"}) : super(key: key);
 

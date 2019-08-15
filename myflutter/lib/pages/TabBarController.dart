@@ -127,7 +127,7 @@ class MyButton extends StatelessWidget {
   const MyButton(
       {Key key,
       this.text = '',
-      this.pressed = null,
+      this.pressed,
       this.width = 80.0,
       this.height = 30.0})
       : super(key: key);
@@ -154,7 +154,6 @@ class MyFloatingAcotionBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Container(
       width: 80.0,
       height: 80.0,

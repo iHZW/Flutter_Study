@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myflutter/dataSource/listDataOne.dart';
+import 'package:myflutter/main.dart';
 
 class SettingPage extends StatefulWidget {
   final arguments;
@@ -36,7 +37,7 @@ class _SettingPageState extends State<SettingPage> {
         body: Column(
           children: <Widget>[
             Expanded(
-              flex: 1,
+              flex: 2,
               child: Container(
                 decoration: BoxDecoration(
                     image: DecorationImage(
@@ -57,6 +58,12 @@ class _SettingPageState extends State<SettingPage> {
                         Navigator.pushNamed(context, '/registFirst');
                       },
                     ),
+                    RaisedButton(
+                      child: Text("重启App"),
+                      onPressed: () {
+                        RestartWidget.restartApp(context);
+                      },
+                    )
                   ],
                 ),
               ),

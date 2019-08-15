@@ -283,9 +283,9 @@ class _LuckPageState extends State<LuckPage> {
 }
 
 class ItemViewDemo extends StatelessWidget {
-  String itemName;
-  String imageUrl;
-  String subImageUrl;
+  final String itemName;
+  final String imageUrl;
+  final String subImageUrl;
   ItemViewDemo(this.itemName, this.imageUrl, this.subImageUrl, {Key key})
       : super(key: key);
 

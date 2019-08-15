@@ -369,9 +369,9 @@ class _TotalNavigationPageState extends State<TotalNavigationPage> {
 }
 
 class ItemAllViewDemo extends StatelessWidget {
-  String itemName;
-  String imageUrl;
-  String subImageUrl;
+  final String itemName;
+  final String imageUrl;
+  final String subImageUrl;
   ItemAllViewDemo(
     this.itemName,
     this.imageUrl, {
@@ -543,9 +543,9 @@ class ItemAllViewDemo extends StatelessWidget {
 // }
 
 class ItemViewDemo extends StatelessWidget {
-  String itemName;
-  String imageUrl;
-  String subImageUrl;
+  final String itemName;
+  final String imageUrl;
+  final String subImageUrl;
   ItemViewDemo(
     this.itemName,
     this.imageUrl, {

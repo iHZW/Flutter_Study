@@ -1,8 +1,12 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' as prefix0;
 import 'SearchPage.dart';
 import 'package:myflutter/pages/AppBarDemo.dart';
 import '../tabs/Tabs.dart';
 import 'LuckPage.dart';
+import 'package:myflutter/main.dart';
+import 'package:myflutter/routers/routerNew.dart';
 
 class HomeContent extends StatefulWidget {
   HomeContent({Key key}) : super(key: key);
@@ -303,24 +307,28 @@ class _HomeContentState extends State<HomeContent> {
                     ),
                 onPressed: () {},
               ),
+              Divider(),
               ListTile(
                 title: Text("进入测试界面"),
                 onTap: () {
                   Navigator.pushNamed(context, '/luckPage');
                 },
               ),
+              Divider(),
               ListTile(
                 title: Text("进入WebViewPage测试界面"),
                 onTap: () {
                   Navigator.pushNamed(context, '/luckDetailPage');
                 },
               ),
+              Divider(),
               ListTile(
                 title: Text("进入全站导航"),
                 onTap: () {
                   Navigator.pushNamed(context, '/totalNavigationPage');
                 },
               ),
+              Divider(),
               Container(
                 color: Colors.blue,
                 // height: 50.0,
@@ -355,9 +363,72 @@ class _HomeContentState extends State<HomeContent> {
                     Navigator.pushNamed(context, '/totalNavigationPage');
                   },
                 ),
-              )
+              ),
+              FlatButton.icon(
+                label: Text("重启App"),
+                icon: Icon(Icons.star),
+                onPressed: () {
+                  // showDialog(
+                  //     context: context,
+                  //     builder: (BuildContext context) {
+                  //       return AlertDialog(
+                  //         title: Text("提醒"),
+                  //         content: Text("重启App后生效"),
+                  //         actions: <Widget>[
+                  //           FlatButton(
+                  //             child: Text('稍后我自己重启'),
+                  //             onPressed: () {
+                  //               // Navigator.of(context).pop();
+                  //             },
+                  //           ),
+                  //           FlatButton(
+                  //             child: Text('现在重启'),
+                  //             onPressed: () {
+                  //               RestartWidget.restartApp(context);
+                  //               // Navigator.of(context).pop();
+                  //             },
+                  //           )
+                  //         ],
+                  //       );
+                  //     });
+
+                  showCupertinoDialog();
+                },
+              ),
+              Divider(),
+              FlatButton(
+                child: Text("调换搜索界面"),
+                onPressed: () {
+                  Router.push(context, Router.searchPage, {"id": "首页=>搜索=>传参"});
+                },
+              ),
             ],
           ),
         ));
+  }
+
+// 显示弹出框
+  void showCupertinoDialog() {
+    var dialog = CupertinoAlertDialog(
+      title: Text("提示"),
+      content: Text("重启App"),
+      actions: <Widget>[
+        CupertinoButton(
+          child: Text("取消"),
+          onPressed: () {
+            Navigator.of(context).pop();
+            // Navigator.pop(context);
+          },
+        ),
+        CupertinoButton(
+          child: Text("确定"),
+          onPressed: () {
+            // Navigator.pop(context);
+            RestartWidget.restartApp(context);
+          },
+        ),
+      ],
+    );
+    showDialog(context: context, builder: (_) => dialog);
   }
 }

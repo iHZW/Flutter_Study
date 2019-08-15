@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:http/http.dart' as http;
 
-class Widget_WebView_Page extends StatefulWidget {
+class WidgetWebViewPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return Widget_WebView_State();
+    return WidgetWebViewPageState();
   }
 }
 
-class Widget_WebView_State extends State<Widget_WebView_Page>
+class WidgetWebViewPageState extends State<WidgetWebViewPage>
     with SingleTickerProviderStateMixin {
   FlutterWebviewPlugin flutterWebviewPlugin = FlutterWebviewPlugin();
   var title = "WebView组件";
@@ -25,6 +25,7 @@ class Widget_WebView_State extends State<Widget_WebView_Page>
       this.title = title;
       print('####################   $title');
     });
+    return this.title;
   }
 
   //获取h5页面标题
@@ -45,6 +46,7 @@ class Widget_WebView_State extends State<Widget_WebView_Page>
     }).whenComplete(
       client.close,
     );
+    return title;
   }
 
   @override
@@ -211,7 +213,7 @@ class Widget_WebView_State extends State<Widget_WebView_Page>
   }
 
   void handleJs() {
-    flutterWebviewPlugin.evalJavascript("abc(${title}')").then((result) {});
+    flutterWebviewPlugin.evalJavascript("abc($title')").then((result) {});
   }
 }
 
