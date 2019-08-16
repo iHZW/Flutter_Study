@@ -3,7 +3,8 @@ import 'package:myflutter/pages/Home.dart';
 import 'package:myflutter/pages/Setting.dart';
 import 'package:myflutter/pages/CategoryPage.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:toast/toast.dart';
+// import 'package:toast/toast.dart';
+import 'package:myflutter/widgets/library/toast_new.dart';
 import 'package:myflutter/pages/my/UserCenterPage.dart';
 import '../pages/publish/PublishPage.dart';
 
