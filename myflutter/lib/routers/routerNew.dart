@@ -3,12 +3,14 @@ import 'package:flutter/cupertino.dart';
 import '../pages/web_view_page.dart';
 import '../pages/SearchPage.dart';
 import '../pages/user/Login.dart';
+import '../pages/publish/PublishPage.dart';
 
 // 实现已定义路由跳转传参
 
 class Router {
   static const searchPage = 'app://SearchPage';
   static const loginPage = 'app://LoginPage';
+  static const publishPage = 'app://PublishPage';
 
   Widget _getPage(String url, dynamic params) {
     if (url.startsWith('https://') || url.startsWith('http://')) {
@@ -21,6 +23,9 @@ class Router {
           break;
         case loginPage:
           tempWidget = LoginPage();
+          break;
+        case publishPage:
+          tempWidget = PublishPage();
           break;
         default:
       }

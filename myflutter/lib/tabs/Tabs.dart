@@ -5,6 +5,7 @@ import 'package:myflutter/pages/CategoryPage.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:toast/toast.dart';
 import 'package:myflutter/pages/my/UserCenterPage.dart';
+import '../pages/publish/PublishPage.dart';
 
 class Tabs extends StatefulWidget {
   final currentIndex;
@@ -14,9 +15,9 @@ class Tabs extends StatefulWidget {
 }
 
 class _Item {
-  String name;
+  String name, selectIcon, normalIcon;
   Icon tabIcon;
-  _Item({this.name, this.tabIcon});
+  _Item({this.name, this.tabIcon, this.selectIcon, this.normalIcon});
 }
 
 class _TabsState extends State<Tabs> {
@@ -28,15 +29,42 @@ class _TabsState extends State<Tabs> {
   List _pageList = [
     HomeContent(),
     CategoryPage(),
+    PublishPage(),
     SettingPage(),
     UserCenterPage(),
   ];
 
   final itemNames = [
-    _Item(name: "首页", tabIcon: Icon(Icons.home)),
-    _Item(name: "分类", tabIcon: Icon(Icons.category)),
-    _Item(name: "设置", tabIcon: Icon(Icons.settings)),
-    _Item(name: "我的", tabIcon: Icon(Icons.supervised_user_circle)),
+    _Item(
+      name: "首页",
+      tabIcon: Icon(Icons.home),
+      selectIcon: "images/ic_tab_home_active.png",
+      normalIcon: "images/ic_tab_home_normal.png",
+    ),
+    _Item(
+      name: "分类",
+      tabIcon: Icon(Icons.category),
+      selectIcon: "images/ic_tab_category_active.png",
+      normalIcon: "images/ic_tab_category_normal.png",
+    ),
+    _Item(
+      name: "发布",
+      tabIcon: Icon(Icons.public),
+      selectIcon: "images/ic_tab_publish_active.png",
+      normalIcon: "images/ic_tab_publish_active.png",
+    ),
+    _Item(
+      name: "设置",
+      tabIcon: Icon(Icons.settings),
+      selectIcon: "images/ic_tab_setting_active.png",
+      normalIcon: "images/ic_tab_setting_normal.png",
+    ),
+    _Item(
+      name: "我的",
+      tabIcon: Icon(Icons.supervised_user_circle),
+      selectIcon: "images/ic_tab_profile_active.png",
+      normalIcon: "images/ic_tab_profile_normal.png",
+    ),
   ];
 
   List<BottomNavigationBarItem> itemList;
@@ -48,8 +76,18 @@ class _TabsState extends State<Tabs> {
       itemList = itemNames
           .map((item) => BottomNavigationBarItem(
               title: Text(item.name),
-              icon: item.tabIcon,
-              activeIcon: Icon(Icons.new_releases)))
+              icon: Image.asset(
+                item.normalIcon,
+                fit: BoxFit.cover,
+                height: 30.0,
+                width: 30.0,
+              ),
+              activeIcon: Image.asset(
+                item.selectIcon,
+                fit: BoxFit.cover,
+                height: 30.0,
+                width: 30.0,
+              )))
           .toList();
     }
   }
@@ -70,8 +108,8 @@ class _TabsState extends State<Tabs> {
       //   title: Text("Stack 组件"),
       // ),
       floatingActionButton: Container(
-        width: 70.0,
-        height: 70.0,
+        width: 74.0,
+        height: 74.0,
         padding: EdgeInsets.all(8.0),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(35.0),
@@ -80,8 +118,9 @@ class _TabsState extends State<Tabs> {
         child: FloatingActionButton(
           elevation: 0.0,
           child: Icon(Icons.add),
-          backgroundColor:
-              this._currentIndex == 1 ? Colors.blue : Colors.yellow,
+          backgroundColor: this._currentIndex == 2
+              ? Color.fromARGB(255, 0, 188, 96)
+              : Color.fromARGB(255, 212, 212, 212),
           onPressed: () {
             // Navigator.of(context).pushAndRemoveUntil(
             //     MaterialPageRoute(
@@ -96,7 +135,7 @@ class _TabsState extends State<Tabs> {
             // Toast.show("你好啊!我是Toast", context);
 
             setState(() {
-              this._currentIndex = 1;
+              this._currentIndex = 2;
             });
             ToastView.createView(
                 "你好啊!我是Toast",
@@ -124,6 +163,8 @@ class _TabsState extends State<Tabs> {
         // fixedColor: Colors.red,  //选中颜色
         type: BottomNavigationBarType.fixed, //设置允许多个tab
         items: itemList,
+        // 修改选中字体的颜色
+        fixedColor: Color.fromARGB(255, 0, 188, 96),
         // [
         //   BottomNavigationBarItem(
         //     icon: Icon(Icons.home),
