@@ -98,7 +98,7 @@ class _HomeContentState extends State<HomeContent> {
                         Navigator.of(context).pushAndRemoveUntil(
                             MaterialPageRoute(
                                 builder: (context) => Tabs(
-                                      currentIndex: 2,
+                                      currentIndex: 3,
                                     )),
                             (route) => route == null);
                       },

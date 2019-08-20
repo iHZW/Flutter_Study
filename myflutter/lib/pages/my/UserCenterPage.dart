@@ -13,6 +13,7 @@ class UserCenterPage extends StatefulWidget {
 }
 
 class _UserCenterPageState extends State<UserCenterPage> {
+  int currendIndex = 1;
 // 右侧箭头
   _rightArrow() {
     return Icon(
@@ -124,7 +125,38 @@ class _UserCenterPageState extends State<UserCenterPage> {
               SliverToBoxAdapter(
                 child: Container(
                   height: 300.0,
-                  color: Colors.purple,
+                  color: Colors.white,
+                  child: CupertinoSegmentedControl<int>(
+                    children: {
+                      1: Padding(
+                        padding: EdgeInsets.all(5.0),
+                        child: Text(
+                          "你!",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                      2: Padding(
+                        padding: EdgeInsets.all(5.0),
+                        child:
+                            Text("好!", style: TextStyle(color: Colors.white)),
+                      ),
+                      3: Padding(
+                        padding: EdgeInsets.all(5.0),
+                        child:
+                            Text("啊!", style: TextStyle(color: Colors.white)),
+                      ),
+                    },
+                    groupValue: this.currendIndex,
+                    onValueChanged: (value) {
+                      setState(() {
+                        this.currendIndex = value;
+                      });
+                      print("$value");
+                    },
+                    unselectedColor: CupertinoColors.inactiveGray,
+                    selectedColor: Colors.blue,
+                    borderColor: Colors.blue,
+                  ),
                 ),
               )
             ],
@@ -134,6 +166,9 @@ class _UserCenterPageState extends State<UserCenterPage> {
     );
   }
 }
+
+TabController _tabController;
+final List<String> _tabText = ['影视', '图书', '音乐'];
 
 class _VideoBookMusicBookWidet extends StatefulWidget {
   _VideoBookMusicBookWidet({Key key}) : super(key: key);
@@ -158,15 +193,57 @@ class __VideoBookMusicBookWidetState extends State<_VideoBookMusicBookWidet>
         padding: EdgeInsets.only(left: 10.0, bottom: 10.0, right: 10.0),
         child: Column(
           children: <Widget>[
-            Align(
-              alignment: Alignment.topLeft,
-              child: _TabBarWidget(),
-            ),
+            // Align(
+            //   alignment: Alignment.topLeft,
+            //   child: _TabBarWidget(),
+            // ),
+            _tabView(),
           ],
         ),
       ),
     );
   }
+
+  Widget _tabView() {
+    return Expanded(
+      child: TabBarView(
+        children: <Widget>[
+          _tabBarItem('bg_videos_stack_default.png'),
+          _tabBarItem('bg_books_stack_default.png'),
+          _tabBarItem('bg_music_stack_default.png'),
+        ],
+        controller: _tabController,
+      ),
+    );
+  }
+}
+
+_tabBarItem(String img) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceAround,
+    children: <Widget>[
+      getTabViewItem(img, "想看"),
+      getTabViewItem(img, "再看"),
+      getTabViewItem(img, "看过"),
+    ],
+  );
+}
+
+Widget getTabViewItem(String img, String txt) {
+  return Column(
+    children: <Widget>[
+      Expanded(
+        child: Padding(
+          padding: EdgeInsets.only(top: 15.0, bottom: 10.0),
+          child: Image.asset(
+            Constant.IMAGES + img,
+            fit: BoxFit.cover,
+          ),
+        ),
+      ),
+      Text(txt),
+    ],
+  );
 }
 
 class _TabBarWidget extends StatefulWidget {
@@ -218,6 +295,3 @@ class __TabBarWidgetState extends State<_TabBarWidget> {
     );
   }
 }
-
-final List<String> _tabText = ['影视', '图书', '音乐'];
-TabController _tabController;
