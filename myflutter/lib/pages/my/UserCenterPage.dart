@@ -157,7 +157,7 @@ class _UserCenterPageState extends State<UserCenterPage> {
               _divider(),
               SliverToBoxAdapter(
                 child: Container(
-                    height: 1000.0,
+                    height: 800.0,
                     color: Colors.white,
                     child: Column(
                       children: <Widget>[
@@ -199,6 +199,7 @@ class _UserCenterPageState extends State<UserCenterPage> {
                           ),
                         ),
                         Expanded(
+                          // child: Text("年后啊!!!"),
                           child: _CupertionMySegment(),
                         )
 
@@ -238,7 +239,7 @@ class _CupertionMySegmentState extends State<_CupertionMySegment> {
   var statusCode;
   var bodyString;
   double containerWidth;
-  var httpClientResult;
+  String httpClientResult;
 
   // Uri uri =
   //     Uri(scheme: "https", host: "t.weather.sojson.com", queryParameters: {
@@ -262,7 +263,7 @@ class _CupertionMySegmentState extends State<_CupertionMySegment> {
       //输出响应头
       print(result);
       setState(() {
-        httpClientResult = result;
+        httpClientResult = result.length > 0 ? result : "";
       });
       //httpClient关闭
       httpClient.close();
@@ -318,8 +319,8 @@ class _CupertionMySegmentState extends State<_CupertionMySegment> {
                   textAlign: TextAlign.left,
                 ),
                 onPressed: () {
+                  getWeatherData();
                   setState(() {
-                    getWeatherData();
                     httpClientResult = httpClientResult;
                   });
                 },
